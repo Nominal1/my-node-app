@@ -1,10 +1,41 @@
 const http = require('http');
+const EventEmitter = require('events');
+const fs = require('fs');
+const { setupLogger } = require('./logger');
 
-const nomer = 6;
+class AppServer extends EventEmitter{
+	 start(port){
+		this.server = http.createServer( (req, res) => {
+		setTimeout(() =>{
+		this.emit('z', req.url, req.method);
+		}, 2000 );
+		
+	   
+				  res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+				  res.write('<h1>Dvornik  Nikita</h1>');
+				  res.write('478<br>');
+				  res.end(`Число PI: ${pi.toFixed(nomer)}`);
+				});
+	
+		this.server.listen(port, () => {
+			this.emit('ServerWithPortCreated', port);
+		});
+	}	
+	stop(){
+		setTimeout(() => {		            
+		            this.server.close(() => {
+		                this.emit('server:stopped');
+		            });
+		        }, 60000);
+	}
+}
+
+
+const nomer = 5;
 let sum = 0;
 let znak = 1;
 
-for (let k = 0; k < nomer; k++) {
+for (let k = 0; k < 1000000; k++) {
   const den = 2 * k + 1;
   sum += znak / den;
   znak = -znak;
@@ -12,13 +43,21 @@ for (let k = 0; k < nomer; k++) {
 
 let pi = 4 * sum;
 
-const server = http.createServer((req, res) => {
-  res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
-  res.write('<h1>Dvornik  Nikita</h1>');
-  res.write('478<br>')
-  res.write(`Число PI: ${pi}`);
+const server = new AppServer();
+setupLogger(server);
+
+server.once('ServerWithPortCreated', (port) => {
+	console.log(`🚀Сервер запущен на порту: ${port}`)
 });
-const PORT = 3000;
-server.listen(PORT, () => {
-  console.log(`Сервер запущен на http://localhost:${PORT}`);
+server.once('server:stopped', () => {
+	console.log(`🛑 Сервер остановлен`);
+	process.exit(0);
 });
+
+server.on('z', (url, method) => {
+	console.log(`${url} ${method}`);
+	console.log("Hello from Event-Driven Server")
+});
+
+server.start(8090)
+server.stop()
