@@ -1,0 +1,14 @@
+[13:52:50] ServerWithPortCreated: localhost:8090
+[13:52:50] z :/ GET
+[13:52:50] serverclosed: Сервер отключен
+[13:57:19] ServerWithPortCreated: localhost:8090
+[13:57:19] z :/ GET
+[13:57:19] serverclosed: Сервер отключен
+[13:57:54] ServerWithPortCreated: localhost:8090
+[13:57:54] z :/ GET
+[13:58:49] ServerWithPortCreated: localhost:8090
+[13:58:49] z :/ GET
+[13:58:49] z :/ GET
+[13:58:49] serverclosed: Сервер отключен
+[17:20:06] ServerWithPortCreated: localhost:8090
+[17:20:06] serverclosed: Сервер остановлен
