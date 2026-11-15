@@ -14,7 +14,9 @@ class AppServer extends EventEmitter{
 				  res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
 				  res.write('<h1>Dvornik  Nikita</h1>');
 				  res.write('478<br>');
+HEAD
 				  res.end(`Число PI: ${pi.toFixed(nomer)}`);
+origin/main
 				});
 	
 		this.server.listen(port, () => {
@@ -29,7 +31,10 @@ class AppServer extends EventEmitter{
 		        }, 60000);
 	}
 }
+HEAD
 
+const server = new AppServer();
+setupLogger(server);
 
 const nomer = 5;
 let sum = 0;
@@ -46,6 +51,7 @@ let pi = 4 * sum;
 const server = new AppServer();
 setupLogger(server);
 
+origin/main
 server.once('ServerWithPortCreated', (port) => {
 	console.log(`🚀Сервер запущен на порту: ${port}`)
 });
