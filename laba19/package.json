@@ -1,0 +1,14 @@
+{
+  "name": "lab19",
+  "version": "1.0.0",
+  "description": "Лабораторная работа №19: исследование методов работы модуля Events",
+  "private": true,
+  "scripts": {
+    "basic": "node events-basic.js",
+    "once": "node events-once.js",
+    "class": "node events-class.js",
+    "advanced": "node events-advanced.js",
+    "bus": "node event-bus.js"
+  },
+  "license": "ISC"
+}
