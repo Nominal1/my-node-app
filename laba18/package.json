@@ -1,0 +1,13 @@
+{
+  "name": "lab18",
+  "version": "1.0.0",
+  "description": "Лабораторная работа №18: исследование методов работы модуля OS",
+  "private": true,
+  "scripts": {
+    "info": "node os-info.js",
+    "resources": "node os-resources.js",
+    "network": "node os-network.js",
+    "monitor": "node os-monitor.js"
+  },
+  "license": "ISC"
+}
